@@ -1,5 +1,43 @@
-h1, h2 {
+body {
+  background-color: #bfbfbf;
+}
+
+h1 {
   display: block;
+  margin: 0px;
   text-align: center;
-  color: blue;
+  color: #153679;
+}
+
+h2 {
+  display: block;
+  margin: 0px 0px 15px 0px;
+  text-align: center;
+  color: #153679;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.movieList {
+  background-color: lightslategray;
+  width: 25%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.movie {
+  position: flex;
+  padding: 20px;
+  margin: 5px;
+  width: 80%;
+  background-color: #eaebed;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 4px 4px darkslategray;
 }
