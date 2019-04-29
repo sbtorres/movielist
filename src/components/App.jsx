@@ -1,13 +1,25 @@
 import MovieList from './MovieList.js';
 import MoviesList from './MoviesList.js';
 import Search from './Search.js';
+import AddMovie from './AddMovie.js';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [MoviesList[0], MoviesList[1], MoviesList[2], MoviesList[3], MoviesList[4]]
+      movies: []
     }
+  }
+
+  addMovie(event) {
+    event.preventDefault();
+    var inputVal = document.getElementById("movieAdder").value;
+    var currentList = this.state.movies;
+    var newMovie = {title: inputVal};
+    currentList.push(newMovie)
+    this.setState({
+      movies: currentList
+    });
   }
 
   onSubmit(event) {
@@ -32,6 +44,7 @@ class App extends React.Component {
   render() {
     return(
       <div className="container">
+        <AddMovie addMovie={this.addMovie.bind(this)} />
         <Search onSubmit={this.onSubmit.bind(this)}/>
         <div className="MovieList">
           <MovieList movies = {this.state.movies} />
