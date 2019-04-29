@@ -5,19 +5,16 @@
     <title>Movie List App</title>
     <link rel="stylesheet" href="styles/style.css">
     <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/react/umd/react.production.min.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.production.min.js"></script>
   </head>
   <body>
-      <h1>Movie List App</h1>
-      <h2>By Scott Torres for Hack Reactor</h2>
-      <div class="container">
-        <div class="movieList">
-          <div class="movie">Mean Girls</div>
-          <div class="movie">Hackers</div>
-          <div class="movie">The Grey</div>
-          <div class="movie">Sunshine</div>
-          <div class="movie">Ex Machina</div>
-        </div>
-      </div>
-      <script src="src/MovieList.js"></script>
+      <!-- <h1>Movie List App</h1>
+      <h2>By Scott Torres for Hack Reactor</h2> -->
+      <div id="app"></div>
+      <script type="module" src="compiled/src/components/App.js"></script>
+      <script type="module" src="compiled/src/components/MovieList.js"></script>
+      <script type="module" src="compiled/src/components/Movie.js"></script>
+      <script type="module" src="compiled/src/index.js"></script>
   </body>
 </html>

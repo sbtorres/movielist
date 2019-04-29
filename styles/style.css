@@ -16,7 +16,7 @@ h2 {
   color: #153679;
 }
 
-.container {
+.app {
   display: flex;
   justify-content: center;
 }
