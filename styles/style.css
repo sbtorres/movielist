@@ -16,26 +16,43 @@ h2 {
   color: #153679;
 }
 
-.app {
+.container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.movieList {
+.SearchBar {
+  display: flex;
+  width: 40%;
+  flex-direction: row;
+  justify-content: center;
+  margin: 10px 0px;
+}
+
+button {
+  width: 20%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.MovieList {
   background-color: lightslategray;
   width: 25%;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   border-radius: 3px;
 }
 
-.movie {
+.Movie {
   position: flex;
   padding: 20px;
-  margin: 5px;
-  width: 80%;
+  margin: 0px 0px 10px 0px;
   background-color: #eaebed;
   text-align: center;
   border-radius: 5px;

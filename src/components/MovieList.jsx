@@ -1,13 +1,11 @@
-$(document).ready(function() {
+import Movie from "./Movie.js";
 
-  var movies = [
-    {title: 'Mean Girls'},
-    {title: 'Hackers'},
-    {title: 'The Grey'},
-    {title: 'Sunshine'},
-    {title: 'Ex Machina'},
-  ];
-  
-  
-  movies.map(() => ($(".movieList").append('<div class="movie">movies.title</div>')));
-});
+var MovieList = (props) => (
+  <div>
+    {props.movies.map((movie) => (
+      (<Movie movie={movie} />)))}
+  </div>
+)
+
+export default MovieList;
+
