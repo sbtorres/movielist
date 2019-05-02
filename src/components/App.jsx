@@ -2,6 +2,7 @@ import MovieList from './MovieList.js';
 import MoviesList from './MoviesList.js';
 import Search from './Search.js';
 import AddMovie from './AddMovie.js';
+import WatchFilter from './WatchFilter.js';
 
 class App extends React.Component {
   constructor() {
@@ -66,6 +67,7 @@ class App extends React.Component {
       <div className="container">
         <AddMovie addMovie={this.addMovie.bind(this)} />
         <Search onSubmit={this.onSubmit.bind(this)}/>
+        <WatchFilter />
         <div className="MovieList">
           <MovieList movies = {this.state.movies} onClick = {this.onClick.bind(this)}/>
         </div>
