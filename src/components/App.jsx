@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: []
+      movies: [],
+      watched: false
     }
   }
 
@@ -18,7 +19,8 @@ class App extends React.Component {
     var newMovie = {title: inputVal};
     currentList.push(newMovie)
     this.setState({
-      movies: currentList
+      movies: currentList,
+      watched: false
     });
   }
 
@@ -34,10 +36,28 @@ class App extends React.Component {
     debugger;
     if(matches.length > 0) {
       this.setState({
-        movies: matches
+        movies: matches,
+        watched: false
       })
     } else {
       alert('Sorry, no movies by that name exist!');
+    }
+  }
+
+  onClick(event) {
+    event.preventDefault();
+    if (this.state.watched === false) {
+      this.setState({
+        watched: true
+      })
+      var element = document.getElementById(event.target.id);
+      $(element).addClass('Watched');
+    } else {
+      this.setState({
+        watched: false
+      })
+      var element = document.getElementById(event.target.id);
+      $(element).removeClass('Watched');
     }
   }
 
@@ -47,7 +67,7 @@ class App extends React.Component {
         <AddMovie addMovie={this.addMovie.bind(this)} />
         <Search onSubmit={this.onSubmit.bind(this)}/>
         <div className="MovieList">
-          <MovieList movies = {this.state.movies} />
+          <MovieList movies = {this.state.movies} onClick = {this.onClick.bind(this)}/>
         </div>
       </div>
     )

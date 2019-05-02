@@ -1,9 +1,9 @@
 import Movie from "./Movie.js";
 
 var MovieList = (props) => (
-  <div>
-    {props.movies.map((movie) => (
-      (<Movie movie={movie} />)))}
+  <div className="EachMovie">
+      {props.movies.map((movie, index) => (
+      (<Movie key={index} id={index} movie={movie} onClick = {props.onClick} />)))}
   </div>
 )
 
