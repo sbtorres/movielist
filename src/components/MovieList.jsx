@@ -15,9 +15,9 @@ class MovieList extends React.Component {
 
   render () {
     return (
-      <div className="EachMovie">
+      <div className="EachMovie MovieList">
           {this.props.movies.map((movie, index) => (
-          (<Movie key={index} id={index} movie={movie} watched={movie.watched} onClick = {this.props.onClick} />)))}
+          (<Movie key={index} id={index} movie={movie} watched={movie.watched} onMovieTitleClick={this.props.onMovieTitleClick} onWatchedClick={this.props.onWatchedClick} />)))}
       </div>
     )
   }

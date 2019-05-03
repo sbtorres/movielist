@@ -16,7 +16,7 @@ h2 {
   color: #153679;
 }
 
-p {
+.movie-title {
   display: flex;
   flex-direction: row;
   width: 160px;
@@ -24,6 +24,11 @@ p {
   margin: 0px 80px 0px 0px;
   background-color: #eaebed;
   border-radius: 5px;
+}
+
+.info-panel {
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -104,7 +109,7 @@ button {
 
 .Movie {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 0% 0% 7% 0%;
   background-color: #eaebed;
   text-align: center;

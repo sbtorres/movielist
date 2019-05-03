@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [{title: 'Mean Girls', watched: false}, {title: 'The Lion King', watched: true}],
+      movies: [{title: 'Mean Girls', watched: false, infoPanel: false}, {title: 'The Lion King', watched: true, infoPanel: false}],
     }
   }
 
@@ -20,7 +20,8 @@ class App extends React.Component {
     currentList.push(newMovie)
     this.setState({
       movies: currentList,
-      watched: false
+      watched: false,
+      infoPanel: false
     });
   }
 
@@ -44,9 +45,8 @@ class App extends React.Component {
   }
 
   //WATCHED BUTTON CLICK HANDLER
-  onClick(event) {
+  onWatchedClick(event) {
     event.preventDefault();
-    console.log('clicked', event.target.id);
     let prevState = this.state; 
     prevState.movies.map((movie, index) => {
       var prevWatched = movie.watched;
@@ -55,6 +55,13 @@ class App extends React.Component {
       }
     })
     this.setState(prevState);
+  }
+
+  //MOVIE TITLE CLICK HANDLER
+  onMovieTitleClick(event) {
+    event.preventDefault();
+    var prevState = this.state;
+    console.log('movie title click');
   }
 
   filterWatched(event) {
@@ -92,9 +99,7 @@ class App extends React.Component {
         <AddMovie addMovie={this.addMovie.bind(this)} />
         <Search onSubmit={this.onSubmit.bind(this)}/>
         <WatchFilter filterNotWatched={this.filterNotWatched.bind(this)} filterWatched={this.filterWatched.bind(this)}/>
-        <div className="MovieList">
-          <MovieList onClick={this.onClick.bind(this)} movies={this.state.movies}/>
-        </div>
+        <MovieList onMovieTitleClick={this.onMovieTitleClick.bind(this)} onWatchedClick={this.onWatchedClick.bind(this)} movies={this.state.movies}/>
       </div>
     )
   }
