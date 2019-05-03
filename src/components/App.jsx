@@ -8,8 +8,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [],
-      watched: false
+      movies: [{title: 'Mean Girls', watched: false}, {title: 'The Lion King', watched: true}],
     }
   }
 
@@ -25,6 +24,7 @@ class App extends React.Component {
     });
   }
 
+  //SEARCH BAR SUBMIT METHOD
   onSubmit(event) {
     event.preventDefault();
     var inputValue = document.getElementById("filter").value;
@@ -38,38 +38,39 @@ class App extends React.Component {
     if(matches.length > 0) {
       this.setState({
         movies: matches,
-        watched: false
       })
     } else {
       alert('Sorry, no movies by that name exist!');
     }
   }
 
+  //WATCHED BUTTON CLICK HANDLER
   onClick(event) {
     event.preventDefault();
-    if (this.state.watched === false) {
-      this.setState({
-        watched: true
-      })
-      var element = document.getElementById(event.target.id);
-      $(element).addClass('Watched');
-    } else {
-      this.setState({
-        watched: false
-      })
-      var element = document.getElementById(event.target.id);
-      $(element).removeClass('Watched');
-    }
+    console.log('clicked', event.target.id);
+    let prevState = this.state; 
+    prevState.movies.map((movie, index) => {
+      var prevWatched = movie.watched;
+      if(JSON.stringify(index) === event.target.id) {
+        movie.watched = !prevWatched;
+      }
+    })
+    this.setState(prevState);
   }
+
+  filterWatched(event) {
+    event.preventDefault();
+  }
+
 
   render() {
     return(
       <div className="container">
         <AddMovie addMovie={this.addMovie.bind(this)} />
         <Search onSubmit={this.onSubmit.bind(this)}/>
-        <WatchFilter />
+        <WatchFilter filterWatched={this.filterWatched.bind(this)}/>
         <div className="MovieList">
-          <MovieList movies = {this.state.movies} onClick = {this.onClick.bind(this)}/>
+          <MovieList onClick={this.onClick.bind(this)} movies={this.state.movies}/>
         </div>
       </div>
     )

@@ -77,7 +77,6 @@ p {
 }
 
 .Watched {
-  background-color: green;
   display: flex;
   flex-direction: row;
   align-self: center;
