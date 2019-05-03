@@ -1,6 +1,3 @@
-//import App from "./App";
-
-
 const Button = styled.button`
 /* Adapt the colors based on primary prop */
 background: ${props => props.watched ? "green" : "white"};

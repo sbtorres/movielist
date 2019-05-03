@@ -34,7 +34,6 @@ class App extends React.Component {
         matches.push(movie);
       }
     })
-    debugger;
     if(matches.length > 0) {
       this.setState({
         movies: matches,
@@ -60,6 +59,30 @@ class App extends React.Component {
 
   filterWatched(event) {
     event.preventDefault();
+    var prevState = this.state;
+    var watchedMovies = [];
+    prevState.movies.map((movie) => {
+      if(movie.watched === true) {
+        watchedMovies.push(movie);
+      }
+    })
+    this.setState({
+      movies: watchedMovies
+    })
+  }
+
+  filterNotWatched(event) {
+    event.preventDefault();
+    var prevState = this.state;
+    var notWatchedMovies = [];
+    prevState.movies.map((movie) => {
+      if(movie.watched === false) {
+        notWatchedMovies.push(movie);
+      }
+    })
+    this.setState({
+      movies: notWatchedMovies
+    })
   }
 
 
@@ -68,7 +91,7 @@ class App extends React.Component {
       <div className="container">
         <AddMovie addMovie={this.addMovie.bind(this)} />
         <Search onSubmit={this.onSubmit.bind(this)}/>
-        <WatchFilter filterWatched={this.filterWatched.bind(this)}/>
+        <WatchFilter filterNotWatched={this.filterNotWatched.bind(this)} filterWatched={this.filterWatched.bind(this)}/>
         <div className="MovieList">
           <MovieList onClick={this.onClick.bind(this)} movies={this.state.movies}/>
         </div>
