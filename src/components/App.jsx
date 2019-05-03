@@ -3,6 +3,7 @@ import MoviesList from './MoviesList.js';
 import Search from './Search.js';
 import AddMovie from './AddMovie.js';
 import WatchFilter from './WatchFilter.js';
+import MovieInformation from './MovieInformation.js';
 
 class App extends React.Component {
   constructor() {
@@ -61,7 +62,13 @@ class App extends React.Component {
   onMovieTitleClick(event) {
     event.preventDefault();
     var prevState = this.state;
-    console.log('movie title click');
+    prevState.movies.map((movie, index) => {
+      var prevInfoPanel = movie.infoPanel;
+      if(JSON.stringify(index) === event.target.id) {
+        movie.infoPanel = !prevInfoPanel;
+      }
+    })
+    this.setState(prevState);
   }
 
   filterWatched(event) {
@@ -99,7 +106,7 @@ class App extends React.Component {
         <AddMovie addMovie={this.addMovie.bind(this)} />
         <Search onSubmit={this.onSubmit.bind(this)}/>
         <WatchFilter filterNotWatched={this.filterNotWatched.bind(this)} filterWatched={this.filterWatched.bind(this)}/>
-        <MovieList onMovieTitleClick={this.onMovieTitleClick.bind(this)} onWatchedClick={this.onWatchedClick.bind(this)} movies={this.state.movies}/>
+        <MovieList movieInfo={MovieInformation} onMovieTitleClick={this.onMovieTitleClick.bind(this)} onWatchedClick={this.onWatchedClick.bind(this)} movies={this.state.movies}/>
       </div>
     )
   }

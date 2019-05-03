@@ -17,11 +17,10 @@ h2 {
 }
 
 .movie-title {
-  display: flex;
-  flex-direction: row;
+  display: inline-block;
+  text-align: center;
   width: 160px;
   padding: 20px;
-  margin: 0px 80px 0px 0px;
   background-color: #eaebed;
   border-radius: 5px;
 }
@@ -90,12 +89,18 @@ h2 {
 }
 
 button {
-  width: 20%;
+  width: 40%;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
 
+.info-text {
+  display: flex;
+  flex-direction: column;
+  justify-self: left;
+  white-space: pre-wrap;
+}
 .MovieList {
   background-color: lightslategray;
   width: 25%;

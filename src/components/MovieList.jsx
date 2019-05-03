@@ -1,12 +1,5 @@
 import Movie from "./Movie.js";
 
-// var MovieList = (props) => (
-//   <div className="EachMovie">
-//       {props.movies.map((movie, index) => (
-//       (<Movie key={index} id={index} movie={movie} onClick = {props.onClick} />)))}
-//   </div>
-// )
-
 class MovieList extends React.Component {
   constructor (props) {
     super (props);
@@ -17,7 +10,7 @@ class MovieList extends React.Component {
     return (
       <div className="EachMovie MovieList">
           {this.props.movies.map((movie, index) => (
-          (<Movie key={index} id={index} movie={movie} watched={movie.watched} onMovieTitleClick={this.props.onMovieTitleClick} onWatchedClick={this.props.onWatchedClick} />)))}
+          (<Movie key={index} id={index} movie={movie} movieInfo={this.props.movieInfo[index]} watched={movie.watched} onMovieTitleClick={this.props.onMovieTitleClick} onWatchedClick={this.props.onWatchedClick} />)))}
       </div>
     )
   }
