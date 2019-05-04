@@ -6,6 +6,7 @@ const db = require('./models/index.js');
 const cors = require('cors');
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors());
 
 app.get('/', (req, res) => {
@@ -14,16 +15,18 @@ app.get('/', (req, res) => {
       console.log('error in getting movie list data');
       return;
     }
-    console.log(movieList);
     res.status(200);
     res.send(JSON.stringify(movieList));
   })
 })
 
-app.get('/api/movies', (req, res) => {
-
-  res.status(200);
-  res.send('in the movies get request');
+app.post('/', (req, res) => {
+  db.postMovie(req.body, (err) => {
+    if (err) {
+      console.log('error adding movie to database');
+    }
+    res.send('Successfully added movie to database!');
+  })
 })
 
 app.listen(port, () => console.log(`Now Listening on port ${port}!`));

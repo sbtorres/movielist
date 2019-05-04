@@ -18,6 +18,19 @@ var getMovies = (callback) => {
   })
 }
 
+var postMovie = (data, callback) => {
+  var query = `insert into movieList (title, watched, infoPanel, summary, year) 
+               values ('${data.title}', 0, 0, '${data.summary}', '${data.year}')`;
+  connection.query(query, (err) => {
+    if (err) {
+      console.log('error adding movie to database');
+      return;
+    }
+    callback(null);
+  })
+}
+
 module.exports = {
   getMovies,
+  postMovie,
 }

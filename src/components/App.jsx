@@ -22,12 +22,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('before request');
       $.ajax({ 
         url: "http://localhost:3000/",
-        type: "GET",
+        method: "GET",
         success: (data) => {
-          console.log('in success callback');
           var newState = [];
           data = JSON.parse(data);
           data.map((movie) => (
@@ -41,12 +39,9 @@ class App extends React.Component {
               }
             })
           ))
-          console.log(newState);
           this.setState({movies: newState});
         }
       })
-    console.log('request finished'); 
-
   };
 
   //ADD MOVIE INPUT HANDLER
@@ -65,7 +60,19 @@ class App extends React.Component {
       };
       prevState.movies.push(newMovie)
       this.setState(prevState);
-      
+      $.ajax({
+        url: 'http://localhost:3000/',
+        method: 'POST',
+        dataType: 'application/json',
+        data: {
+          title: newMovie.title,
+          summary: newMovie.movieInfo.overview,
+          year: newMovie.movieInfo.releaseDate,
+        },
+        success: (data) => {
+          console.log(data);
+        }
+      })
     });
   }
 

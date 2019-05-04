@@ -1,5 +1,3 @@
-
-
 var movies = [
   {title: 'Mean Girls', 
     watched: false, 
