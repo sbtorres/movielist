@@ -40,17 +40,43 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getMovieInfo('Mean Girls',  
-    (data) => {this.setState({
-      movies: [{ title: data.results[0].title,
-        watched: false,
-        infoPanel: false,
-        movieInfo: {
-          releaseDate: data.results[0].release_date,
-          overview: data.results[0].overview  
+    console.log('before request');
+      $.ajax({ 
+        url: "http://localhost:3000/",
+        type: "GET",
+        success: (data) => {
+          console.log('in success callback');
+          var newState = [];
+          data = JSON.parse(data);
+          data.map((movie) => (
+            newState.push({
+              title: movie.title, 
+              watched: (movie.watched === 0 ? false : true), 
+              infoPanel: (movie.watched === 0 ? false : true), 
+              movieInfo: {
+                releaseDate: movie.year,
+                overview: movie.summary
+              }
+            })
+          ))
+          console.log(newState);
+          this.setState({movies: newState});
         }
-      }]
-    })})
+      })
+    console.log('request finished'); 
+
+
+    // this.getMovieInfo('Mean Girls',  
+    // (data) => {this.setState({
+    //   movies: [{ title: data.results[0].title,
+    //     watched: false,
+    //     infoPanel: false,
+    //     movieInfo: {
+    //       releaseDate: data.results[0].release_date,
+    //       overview: data.results[0].overview  
+    //     }
+    //   }]
+    // })})
   };
 
   //ADD MOVIE INPUT HANDLER
@@ -69,6 +95,7 @@ class App extends React.Component {
       };
       prevState.movies.push(newMovie)
       this.setState(prevState);
+      
     });
   }
 
