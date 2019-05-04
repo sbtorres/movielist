@@ -13,6 +13,7 @@ class App extends React.Component {
     }
   }
 
+  //ADD MOVIE INPUT HANDLER
   addMovie(event) {
     event.preventDefault();
     var inputVal = document.getElementById("movieAdder").value;
@@ -70,7 +71,8 @@ class App extends React.Component {
     })
     this.setState(prevState);
   }
-
+  
+  //WATCHED BUTTON TOGGLE
   filterWatched(event) {
     event.preventDefault();
     var prevState = this.state;
@@ -85,6 +87,7 @@ class App extends React.Component {
     })
   }
 
+  //NOT WATCHED BUTTON TOGGLE
   filterNotWatched(event) {
     event.preventDefault();
     var prevState = this.state;

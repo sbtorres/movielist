@@ -5,7 +5,6 @@ display: flex;
 flex-direction: column;
 `
 
-
 var Movie = (props) => (
     <div className="Movie">
       <div className="movie-title" id={props.id} onClick={props.onMovieTitleClick}>{props.movie.title}</div>
@@ -14,8 +13,5 @@ var Movie = (props) => (
       </div>
     </div>
 )
-
-
-
 
 export default Movie;

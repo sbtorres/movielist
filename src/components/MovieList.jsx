@@ -3,7 +3,6 @@ import Movie from "./Movie.js";
 class MovieList extends React.Component {
   constructor (props) {
     super (props);
-    //this.state = {watched: false}
   }
 
   render () {
@@ -14,7 +13,6 @@ class MovieList extends React.Component {
       </div>
     )
   }
-
 }
 
 export default MovieList;

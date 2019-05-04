@@ -23,12 +23,14 @@ h2 {
   padding: 20px;
   background-color: #eaebed;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .info-panel {
   display: flex;
   flex-direction: column;
 }
+
 
 .container {
   display: flex;
