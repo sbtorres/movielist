@@ -65,18 +65,6 @@ class App extends React.Component {
       })
     console.log('request finished'); 
 
-
-    // this.getMovieInfo('Mean Girls',  
-    // (data) => {this.setState({
-    //   movies: [{ title: data.results[0].title,
-    //     watched: false,
-    //     infoPanel: false,
-    //     movieInfo: {
-    //       releaseDate: data.results[0].release_date,
-    //       overview: data.results[0].overview  
-    //     }
-    //   }]
-    // })})
   };
 
   //ADD MOVIE INPUT HANDLER
