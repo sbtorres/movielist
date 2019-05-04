@@ -90,8 +90,15 @@ h2 {
   height: 25px;
 }
 
-button {
+.watched-button {
   width: 40%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  width: 40px;
   text-align: center;
   display: flex;
   flex-direction: column;

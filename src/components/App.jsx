@@ -4,13 +4,36 @@ import Search from './Search.js';
 import AddMovie from './AddMovie.js';
 import WatchFilter from './WatchFilter.js';
 import MovieInformation from './MovieInformation.js';
+import api_key from './../../env/movieList.config.js';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [{title: 'Mean Girls', watched: false, infoPanel: false}, {title: 'The Lion King', watched: true, infoPanel: false}],
+      movies: [
+        {title: 'Mean Girls', 
+          watched: false, 
+          infoPanel: false, 
+          movieInfo: {
+            Year: '1994',
+            RunTime: '120 mins'
+          }
+        }, 
+        {
+          title: 'The Lion King', 
+          watched: true, 
+          infoPanel: false,
+          movieInfo: {
+            Year: '2002',
+            RunTime: '145 mins'
+          } 
+        }
+      ] 
     }
+  }
+
+  getMovieInfo(event) {
+    console.log('hi');
   }
 
   //ADD MOVIE INPUT HANDLER
@@ -109,7 +132,7 @@ class App extends React.Component {
         <AddMovie addMovie={this.addMovie.bind(this)} />
         <Search onSubmit={this.onSubmit.bind(this)}/>
         <WatchFilter filterNotWatched={this.filterNotWatched.bind(this)} filterWatched={this.filterWatched.bind(this)}/>
-        <MovieList movieInfo={MovieInformation} onMovieTitleClick={this.onMovieTitleClick.bind(this)} onWatchedClick={this.onWatchedClick.bind(this)} movies={this.state.movies}/>
+        <MovieList onMovieTitleClick={this.onMovieTitleClick.bind(this)} onWatchedClick={this.onWatchedClick.bind(this)} movies={this.state.movies}/>
       </div>
     )
   }
