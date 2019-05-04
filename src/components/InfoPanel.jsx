@@ -18,7 +18,7 @@ class InfoPanel extends React.Component {
   render() {
     if(this.props.infoPanel === true) {
       return(
-      <div className="info-text">Summary: {this.props.movieInfo.overview}{'\n'}Release Year: {this.props.movieInfo.releaseDate}
+      <div className="info-text"><p><strong>Summary: </strong>{this.props.movieInfo.overview}</p>{'\n'}<p><strong>Release Year: </strong>{this.props.movieInfo.releaseDate}</p>
       <Button className="watched-button" watched={this.props.watched} id={this.props.id} onClick={this.props.onWatchedClick}>Watched</Button>
     </div>)
     } else {

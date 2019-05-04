@@ -16,11 +16,16 @@ h2 {
   color: #153679;
 }
 
+p {
+  padding: 3px;
+  margin: 0px;
+}
+
 .movie-title {
   display: inline-block;
   text-align: center;
-  width: 160px;
-  padding: 20px;
+  width: 100%;
+  padding: 10px 0px 10px 0px;
   background-color: #eaebed;
   border-radius: 5px;
   cursor: pointer;
@@ -107,8 +112,9 @@ button {
 .info-text {
   display: flex;
   flex-direction: column;
-  justify-self: left;
   white-space: pre-wrap;
+  padding: 10px;
+  text-align: left;
 }
 .MovieList {
   background-color: lightslategray;
@@ -125,9 +131,11 @@ button {
   display: flex;
   flex-direction: column;
   margin: 0% 0% 7% 0%;
+  width: 80%;
   background-color: #eaebed;
   text-align: center;
   justify-items: center;
   border-radius: 5px;
   box-shadow: 4px 4px darkslategray;
 }
+
