@@ -5,6 +5,7 @@ import AddMovie from './AddMovie.js';
 import WatchFilter from './WatchFilter.js';
 import MovieInformation from './MovieInformation.js';
 import api_key from './../../env/movieList.config.js';
+import getMovieByName from './../data/searchMovies.js';
 
 class App extends React.Component {
   constructor() {
@@ -32,21 +33,30 @@ class App extends React.Component {
     }
   }
 
-  getMovieInfo(event) {
-    console.log('hi');
+  getMovieInfo(event, query, callback) {
+    event.preventDefault();
+    getMovieByName(query, (movieData) => {
+      callback(movieData);
+    })
   }
 
   //ADD MOVIE INPUT HANDLER
   addMovie(event) {
     event.preventDefault();
+    var prevState = this.state;
     var inputVal = document.getElementById("movieAdder").value;
-    var currentList = this.state.movies;
-    var newMovie = {title: inputVal};
-    currentList.push(newMovie)
-    this.setState({
-      movies: currentList,
-      watched: false,
-      infoPanel: false
+    this.getMovieInfo(event, inputVal, (data) => {
+      var newMovie = {title: data.results[0].title,
+              watched: false,
+              infoPanel: false,
+              movieInfo: {
+                releaseDate: data.results[0].release_date,
+                overview: data.results[0].overview  
+              }
+      };
+      prevState.movies.push(newMovie)
+      console.log(prevState);
+      this.setState(prevState);
     });
   }
 
