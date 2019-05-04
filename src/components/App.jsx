@@ -33,19 +33,32 @@ class App extends React.Component {
     }
   }
 
-  getMovieInfo(event, query, callback) {
-    event.preventDefault();
+  getMovieInfo(query, callback) {
     getMovieByName(query, (movieData) => {
       callback(movieData);
     })
   }
+
+  componentDidMount() {
+    this.getMovieInfo('Mean Girls',  
+    (data) => {this.setState({
+      movies: [{ title: data.results[0].title,
+        watched: false,
+        infoPanel: false,
+        movieInfo: {
+          releaseDate: data.results[0].release_date,
+          overview: data.results[0].overview  
+        }
+      }]
+    })})
+  };
 
   //ADD MOVIE INPUT HANDLER
   addMovie(event) {
     event.preventDefault();
     var prevState = this.state;
     var inputVal = document.getElementById("movieAdder").value;
-    this.getMovieInfo(event, inputVal, (data) => {
+    this.getMovieInfo(inputVal, (data) => {
       var newMovie = {title: data.results[0].title,
               watched: false,
               infoPanel: false,
@@ -55,7 +68,6 @@ class App extends React.Component {
               }
       };
       prevState.movies.push(newMovie)
-      console.log(prevState);
       this.setState(prevState);
     });
   }
